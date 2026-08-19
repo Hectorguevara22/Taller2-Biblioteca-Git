@@ -8,7 +8,7 @@ package com.mycompany.taller2.biblioteca.git;
  *
  * @author Keiner
  */
-public class Taller2BibliotecaGit {
+public class main {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
