@@ -43,4 +43,24 @@ public class main {
         sc.nextLine();
     }
 
+    public static Cliente buscarcliente() {
+        System.out.println("consulta selectiva de clientes");
+        System.out.println("identificacion del cliente que desea buscar");
+        String ide = sc.nextLine();
+        for (Cliente cliente : clientes) {
+            if (cliente.getId().equals(ide)) {
+                System.out.println("id :" + cliente.getId());
+                System.out.println("nombre :" + cliente.getNombre());
+                System.out.println("telefono :" + cliente.getTelefono());
+                System.out.println("email : " + cliente.getEmail());
+                System.out.println("----------------------");
+                sc.nextLine();
+                return cliente;
+            }
+        }
+        System.out.println("cliente no encontrado");
+        sc.nextLine();
+        return null;
+    }
+
 }
