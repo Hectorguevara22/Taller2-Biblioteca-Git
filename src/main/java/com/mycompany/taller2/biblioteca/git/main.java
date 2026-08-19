@@ -70,4 +70,39 @@ public class main {
         sc.nextLine();
         return p;
     }
+    public static void devolverPrestamo() {
+
+        System.out.println("\n===== DEVOLVER PRESTAMO =====");
+
+        System.out.print("Ingrese el ID del préstamo: ");
+        String idPrestamo = sc.nextLine();
+
+        for (Prestamo prestamo : prestamos) {
+
+            if (prestamo.getIdPrestamo().equals(idPrestamo)) {
+
+                System.out.println("\nPréstamo encontrado:");
+                System.out.println("ID: " + prestamo.getIdPrestamo());
+                System.out.println("Cliente: " + prestamo.getCliente().getNombre());
+                System.out.println("Libro: " + prestamo.getLibro().getTitulo());
+                System.out.println("Fecha: " + prestamo.getFecha());
+                System.out.println("Estado: " + prestamo.getEstado());
+
+                if (prestamo.getEstado().equals("Devuelto")) {
+                    System.out.println("Este préstamo ya fue devuelto.");
+                    return;
+                }
+                prestamo.setEstado("Devuelto");
+
+                prestamo.getLibro().setDisponible(true);
+
+                System.out.println("\nPréstamo devuelto correctamente.");
+                System.out.println("El libro ahora está disponible.");
+                sc.nextLine();
+                return;
+            }
+        }
+
+        System.out.println("No se encontró un préstamo con ese ID.");
+    }
 }
