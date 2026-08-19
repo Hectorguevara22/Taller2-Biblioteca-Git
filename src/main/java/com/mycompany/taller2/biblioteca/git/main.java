@@ -4,123 +4,131 @@
 package com.mycompany.taller2.biblioteca.git;
 
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.time.LocalDate;
 
 public class main {
 
-    static ArrayList<Prestamo> prestamos = new ArrayList<>();
+    
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-
+    menu();
     }
+    
+    public static void menu(){
+    boolean e = true;
+        while (e) {
+            System.out.println("""
+                                          sistema de biblioteca 
+                               seleccione 
+                               1 gestion de clientes
+                               2 gestion de libros
+                               3 gestion de prestamos
+                               4 salir""");
 
-    public static Prestamo crearPrestamo() {
-        System.out.println("         CREAR PRESTAMO ");
+            int a = sc.nextInt();
+            sc.nextLine();
+            switch (a) {
+                case 1:
+                    boolean x = true;
+                    while (x) {
+                        System.out.println("        gestion de clientes\n"
+                                + "seleccione\n"
+                                + "1 crear cliente\n"
+                                + "2 listar clientes\n"
+                                + "3 buscar clientes\n"
+                                + "4 actualizar clientes\n"
+                                + "5 borrar clientes\n"
+                                + "6 salir");
+                        int b = sc.nextInt();
+                        sc.nextLine();
+                        switch (b) {
+                            case 1:
+                                crearcliente();
+                                break;
+                            case 2:
+                                readcliente();
+                                break;
+                            case 3:
+                                buscarcliente();
+                                break;
+                            case 4:
+                                actualizarcliente();
+                                break;
+                            case 5:
+                                eliminarcliente();
+                                break;
+                            case 6:
+                                x = false;
+                                break;
 
-        System.out.print("Ingrese ID del préstamo: ");
-        String idPrestamo = sc.nextLine();
-        System.out.print("Ingrese identificación del cliente: ");
-        String idCliente = sc.nextLine();
-        Cliente clienteEncontrado = null;
-        for (Cliente cliente : clientes) {
-            if (cliente.getId().equals(idCliente)) {
-                clienteEncontrado = cliente;
-                break;
+                        }
+                    }
+
+                    break;
+                case 2:
+                    boolean op = true;
+                    while (op) {
+                        System.out.println("""
+                                                   gestion de libros
+                                           seleccione
+                                           1 crear libro
+                                           2 listar libros
+                                           3 buscar libros
+                                           4 actualizar libros
+                                           5 borrar libros
+1                                           6 salir""");
+                        int k = sc.nextInt();
+                        sc.nextLine();
+                        switch (k) {
+                            case 1:
+                                crearlibro();
+                                break;
+                            case 2:
+
+                                listarlibros();
+                                break;
+                            case 3:
+                                buscarlibros();
+                                break;
+                            case 4:
+                                actualizarlibros();
+                                break;
+                            case 5:
+                                eliminarlibros();
+                                break;
+                            case 6:
+                                op = false;
+                                break;
+
+                        }
+
+                    }
+                    break;
+                case 3:
+                    boolean z = true;
+                    while (z) {
+                        System.out.println("""
+                                                   gestion de prestamos
+                                           seleccione
+                                           1 crear prestamo
+                                           2 devolver prestamo
+                                           3 listar prestamos
+                                           4 salir""");
+                        int f = sc.nextInt();
+                        sc.nextLine();
+                        switch (f) {
+                            case 1 -> crearPrestamo();
+                            case 2 -> devolverPrestamo();
+                            case 3 -> listarPrestamos();
+                            case 4 -> z = false;
+
+                        }
+                    }
+                    break;
+                case 4:
+                    e = false;
             }
+
         }
-        if (clienteEncontrado == null) {
-            System.out.println("Cliente no encontrado.");
-            return null;
-        }
-        System.out.print("Ingrese código del libro: ");
-        String codigoLibro = sc.nextLine();
-        Libro libroEncontrado = null;
-
-        for (Libro libro : libros) {
-            if (libro.getCodigo().equals(codigoLibro)) {
-                libroEncontrado = libro;
-                break;
-            }
-        }
-        if (libroEncontrado == null) {
-            System.out.println("Libro no encontrado.");
-            return null;
-        }
-        if (!libroEncontrado.isDisponible()) {
-            System.out.println("El libro no está disponible.");
-            return null;
-        }
-        Prestamo p = new Prestamo(
-                idPrestamo,
-                clienteEncontrado,
-                libroEncontrado,
-                LocalDate.now(),
-                "Activo"
-        );
-        libroEncontrado.setDisponible(false);
-        prestamos.add(p);
-        System.out.println("\nPréstamo creado correctamente.");
-        System.out.println("ID préstamo: " + p.getIdPrestamo());
-        System.out.println("Cliente: " + p.getCliente().getNombre());
-        System.out.println("Libro: " + p.getLibro().getTitulo());
-        System.out.println("Fecha: " + p.getFecha());
-        System.out.println("Estado: " + p.getEstado());
-        sc.nextLine();
-        return p;
-    }
-    public static void devolverPrestamo() {
-
-        System.out.println("\n===== DEVOLVER PRESTAMO =====");
-
-        System.out.print("Ingrese el ID del préstamo: ");
-        String idPrestamo = sc.nextLine();
-
-        for (Prestamo prestamo : prestamos) {
-
-            if (prestamo.getIdPrestamo().equals(idPrestamo)) {
-
-                System.out.println("\nPréstamo encontrado:");
-                System.out.println("ID: " + prestamo.getIdPrestamo());
-                System.out.println("Cliente: " + prestamo.getCliente().getNombre());
-                System.out.println("Libro: " + prestamo.getLibro().getTitulo());
-                System.out.println("Fecha: " + prestamo.getFecha());
-                System.out.println("Estado: " + prestamo.getEstado());
-
-                if (prestamo.getEstado().equals("Devuelto")) {
-                    System.out.println("Este préstamo ya fue devuelto.");
-                    return;
-                }
-                prestamo.setEstado("Devuelto");
-
-                prestamo.getLibro().setDisponible(true);
-
-                System.out.println("\nPréstamo devuelto correctamente.");
-                System.out.println("El libro ahora está disponible.");
-                sc.nextLine();
-                return;
-            }
-        }
-
-        System.out.println("No se encontró un préstamo con ese ID.");
-    }
-       public static void listarPrestamos() {
-        if (prestamos.isEmpty()) {
-            System.out.println("No hay préstamos registrados.");
-            return;
-        }
-
-        System.out.println("\n       LISTA DE PRÉSTAMOS ");
-
-        for (Prestamo p : prestamos) {
-            System.out.println("ID Préstamo: " + p.getIdPrestamo());
-            System.out.println("Cliente: " + p.getCliente().getNombre());
-            System.out.println("Libro: " + p.getLibro().getTitulo());
-            System.out.println("Fecha: " + p.getFecha());
-            System.out.println("Estado: " + p.getEstado());
-            System.out.println("-----------------------------");
-        }
-         sc.nextLine();
-    }
+}
 }
