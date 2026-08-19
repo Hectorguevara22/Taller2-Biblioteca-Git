@@ -63,4 +63,33 @@ public class main {
         return null;
     }
 
+    public static Cliente actualizarcliente() {
+        System.out.println("actualizacion de clientes");
+        System.out.println("identificacion del cliente que desea actualizar");
+        String ide = sc.nextLine();
+        for (Cliente cliente : clientes) {
+            if (cliente.getId().equals(ide)) {
+                System.out.println("id :" + cliente.getId());
+                System.out.println("nombre :" + cliente.getNombre());
+                System.out.println("telefono :" + cliente.getTelefono());
+                System.out.println("email : " + cliente.getEmail());
+                System.out.println("----------------------");
+                System.out.println("nuevo nombre :");
+                String nombre = sc.nextLine();
+                System.out.println("nuevo telefono :");
+                String telefono = sc.nextLine();
+                System.out.println("nuevo correo :");
+                String correo = sc.nextLine();
+                cliente.setNombre(nombre);
+                cliente.setTelefono(telefono);
+                cliente.setEmail(correo);
+
+                return cliente;
+            }
+        }
+        System.out.println("Cliente no encontrado");
+        return null;
+
+    }
+
 }
