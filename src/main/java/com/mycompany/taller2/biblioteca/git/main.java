@@ -105,4 +105,22 @@ public class main {
 
         System.out.println("No se encontró un préstamo con ese ID.");
     }
+       public static void listarPrestamos() {
+        if (prestamos.isEmpty()) {
+            System.out.println("No hay préstamos registrados.");
+            return;
+        }
+
+        System.out.println("\n       LISTA DE PRÉSTAMOS ");
+
+        for (Prestamo p : prestamos) {
+            System.out.println("ID Préstamo: " + p.getIdPrestamo());
+            System.out.println("Cliente: " + p.getCliente().getNombre());
+            System.out.println("Libro: " + p.getLibro().getTitulo());
+            System.out.println("Fecha: " + p.getFecha());
+            System.out.println("Estado: " + p.getEstado());
+            System.out.println("-----------------------------");
+        }
+         sc.nextLine();
+    }
 }
