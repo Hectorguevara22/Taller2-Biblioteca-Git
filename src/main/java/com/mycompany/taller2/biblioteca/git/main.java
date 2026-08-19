@@ -10,8 +10,9 @@ public class main {
 
     static ArrayList<Cliente> clientes = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
+
     static void main() {
-        
+
     }
 
     public static Cliente crearcliente() {
@@ -27,6 +28,19 @@ public class main {
         clientes.add(cliente);
         System.out.println("Cliente creado correctamente.");
         return cliente;
+    }
+
+    public static void readcliente() {
+        System.out.println("consulta y listado de clientes");
+        for (Cliente cliente : clientes) {
+            System.out.println("id :" + cliente.getId());
+            System.out.println("nombre :" + cliente.getNombre());
+            System.out.println("telefono :" + cliente.getTelefono());
+            System.out.println("email : " + cliente.getEmail());
+            System.out.println("----------------------");
+
+        }
+        sc.nextLine();
     }
 
 }
