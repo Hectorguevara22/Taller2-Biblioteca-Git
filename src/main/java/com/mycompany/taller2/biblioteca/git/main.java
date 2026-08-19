@@ -33,4 +33,17 @@ public class main {
 
         return libro;
     }
+
+    public static void listarlibros() {
+        System.out.println("consulta de libro");
+        for (Libro libro : libros) {
+            System.out.println("codigo " + libro.getCodigo());
+            System.out.println("titulo " + libro.getTitulo());
+            System.out.println("año de publicacion " + libro.getYearpublic());
+            System.out.println("autor " + libro.getAutor());
+            System.out.println("estado" + libro.isDisponible());
+            System.out.println("----------------------");
+        }
+        sc.nextLine();
+    }
 }
