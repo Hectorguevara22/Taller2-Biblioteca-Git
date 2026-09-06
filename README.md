@@ -14,7 +14,7 @@ de una biblioteca. Almacenamiento en memoria (ArrayList).
 # diagrama de jerarquías 
 ```mermaid
 classDiagram
-    customer --|> person
-    seller --|> person
-    videogame --|> product
-    console --|> product
+    person <|-- customer
+    person <|-- seller
+    product <|-- game
+    product <|-- console
