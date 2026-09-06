@@ -10,4 +10,23 @@ de una biblioteca. Almacenamiento en memoria (ArrayList).
 1. Abrir el proyecto en NetBeans 
 2. Compilar con Maven 
 3. Ejecutar Main.java 
-## Funcionalidades - CRUD de Clientes - CRUD de Libros - Registro de préstamos y devoluciones 
+## Funcionalidades - CRUD de Clientes - CRUD de Libros - Registro de préstamos y devoluciones
+
+classDiagram
+    person <|-- customer
+    person <|-- seller
+    product <|-- videogame
+    product <|-- console
+
+    class person {
+    }
+    class customer {
+    }
+    class seller {
+    }
+    class product {
+    }
+    class videogame {
+    }
+    class console {
+    }
