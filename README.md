@@ -11,4 +11,10 @@ de una biblioteca. Almacenamiento en memoria (ArrayList).
 2. Compilar con Maven 
 3. Ejecutar Main.java 
 ## Funcionalidades - CRUD de Clientes - CRUD de Libros - Registro de préstamos y devoluciones
-
+# diagrama de jerarquías 
+```mermaid
+classDiagram
+    customer --|> person
+    seller --|> person
+    videogame --|> product
+    console --|> product
