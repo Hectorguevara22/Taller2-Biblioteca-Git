@@ -12,21 +12,9 @@ de una biblioteca. Almacenamiento en memoria (ArrayList).
 3. Ejecutar Main.java 
 ## Funcionalidades - CRUD de Clientes - CRUD de Libros - Registro de préstamos y devoluciones
 
+```mermaid
 classDiagram
     person <|-- customer
     person <|-- seller
     product <|-- videogame
     product <|-- console
-
-    class person {
-    }
-    class customer {
-    }
-    class seller {
-    }
-    class product {
-    }
-    class videogame {
-    }
-    class console {
-    }
